@@ -58,7 +58,7 @@ export class BorrowService extends BaseService<
       );
 
     if (
-      createBorrowDto.borrow_date.getTime() < createBorrowDto.due_date.getTime()
+      createBorrowDto.borrow_date.getTime() > createBorrowDto.due_date.getTime()
     )
       throw new BadRequestException(`The date was incorrect.`);
     await this.dataSourse.transaction(async (manager) => {
